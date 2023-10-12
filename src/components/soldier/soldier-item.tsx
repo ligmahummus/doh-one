@@ -27,7 +27,12 @@ const SoldierItem = ({ soldier }: ISoldierItem) => {
           checked={checked}
         />
         <div className="flex items-center gap-4">
-          <label htmlFor={soldier.id}>{soldier.name}</label>
+          <div className="flex flex-col">
+            <label htmlFor={soldier.id}>{soldier.name} </label>
+            <span className="text-gray-500 text-sm">
+              מ.א - {soldier.personalNumber}
+            </span>
+          </div>
           <button
             className="text-red-500 text-sm"
             onClick={() => removeSoldier(soldier.id)}

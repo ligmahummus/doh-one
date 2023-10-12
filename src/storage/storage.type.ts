@@ -3,4 +3,5 @@ export type Soldier = {
   name: string;
   notes: string;
   isChecked: boolean;
+  personalNumber: string;
 };

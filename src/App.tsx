@@ -4,10 +4,21 @@ import AddSoldier from "./components/soldier/add-soldier";
 import SoldiersList from "./components/soldier/soldiers-list";
 import { Soldier } from "./storage/storage.type";
 import { getSoldiers } from "./storage/storage.service";
+import { isPrivateMode } from "./lib/is-private";
+import ExportWhatsapp from "./components/whatsapp/export-whatsapp";
 
 function App() {
   const [refresh, setRefresh] = useState<boolean>(false);
   const [soldiers, setSoldiers] = useState<Soldier[]>([]);
+  // const [privateError, setPrivateError] = useState<boolean>(false);
+
+  useEffect(() => {
+    const isPrivate = async () => {
+      const result = await isPrivateMode();
+      console.log("is private browsing?: " + result);
+    };
+    isPrivate();
+  }, []);
 
   useEffect(() => {
     const soldiers = getSoldiers();
@@ -43,6 +54,7 @@ function App() {
         filterChecked={filterChecked}
         filterMissing={filterMissing}
       />
+      <ExportWhatsapp />
     </main>
   );
 }

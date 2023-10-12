@@ -3,12 +3,13 @@ import { Soldier } from "./storage.type";
 
 const LOCAL_STORAGE_KEY = "soldiers";
 
-export function addSoldier(name: string): void {
+export function addSoldier(name: string, personalNumber: string): void {
   const soldier: Soldier = {
     id: uuid(),
     name,
     notes: "",
     isChecked: false,
+    personalNumber: personalNumber,
   };
   const soldiers = getSoldiers();
   soldiers.push(soldier);
