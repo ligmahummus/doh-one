@@ -94,6 +94,7 @@ export function clearAllNotes() {
   }
 }
 
+// whatsapp
 export function whatsappOutput(): string {
   const SPACER = "%0a";
   const soldiers = getSoldiers();
@@ -109,7 +110,7 @@ export function whatsappOutput(): string {
       SPACER +
       isPresent +
       SPACER +
-      `היערות: ${notes ? notes : "אין"}`;
+      `הערות: ${notes ? notes : "אין"}`;
     output.push(soldierOutput);
   });
   return output.join(SPACER + SPACER);
