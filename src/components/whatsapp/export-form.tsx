@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { whatsappOutput } from "../../storage/storage.service";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { savePhone, whatsappOutput } from "../../storage/storage.service";
 
 const ExportForm = ({ toggle }: IExportForm) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
@@ -9,16 +9,23 @@ const ExportForm = ({ toggle }: IExportForm) => {
     setPhoneNumber(value);
   };
 
+  useEffect(() => {
+    const phone = localStorage.getItem("phone");
+    if (phone) setPhoneNumber(phone);
+  }, []);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (isNaN(+phoneNumber)) return alert("מספר פלאפון חייב להיות מספר");
     if (!phoneNumber) return alert("חסר מספר פלאפון");
+    savePhone(phoneNumber);
+
     const output = whatsappOutput();
     location.href = `whatsapp://send?text=${output}&phone=+972${+phoneNumber}`;
   };
 
   return (
-    <div className="fixed inset-0 bg-zinc-800/60 flex items-center justify-center">
+    <div className="fixed inset-0 w-[90%] bg-zinc-800/60 flex items-center justify-center">
       <form
         className="bg-white h-max shadow-xl p-6 rounded-xl flex flex-col gap-6"
         onSubmit={handleSubmit}

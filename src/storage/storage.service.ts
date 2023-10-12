@@ -114,3 +114,8 @@ export function whatsappOutput(): string {
   });
   return output.join(SPACER + SPACER);
 }
+
+export function savePhone(phone: string): void {
+  const PHONE_KEY = "phone";
+  localStorage.setItem(PHONE_KEY, phone);
+}
