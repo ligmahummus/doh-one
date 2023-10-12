@@ -94,6 +94,7 @@ export function clearAllNotes() {
   }
 }
 
+// whatsapp
 export function whatsappOutput(): string {
   const SPACER = "%0a";
   const soldiers = getSoldiers();
