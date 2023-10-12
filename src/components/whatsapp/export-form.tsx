@@ -25,9 +25,9 @@ const ExportForm = ({ toggle }: IExportForm) => {
   };
 
   return (
-    <div className="fixed inset-0 w-[90%] bg-zinc-800/60 flex items-center justify-center">
+    <div className="fixed inset-0 bg-zinc-800/60 flex items-center justify-center">
       <form
-        className="bg-white h-max shadow-xl p-6 rounded-xl flex flex-col gap-6"
+        className="bg-white h-max w-[90%] shadow-xl p-6 rounded-xl flex flex-col gap-6"
         onSubmit={handleSubmit}
       >
         <div onClick={toggle} className="text-red-500 self-end">
