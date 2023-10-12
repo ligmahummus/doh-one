@@ -93,3 +93,24 @@ export function clearAllNotes() {
     location.reload();
   }
 }
+
+export function whatsappOutput(): string {
+  const SPACER = "%0a";
+  const soldiers = getSoldiers();
+
+  let output: string[] = [];
+
+  soldiers.forEach((soldier) => {
+    const nameAndNumber = soldier.name + " " + soldier.personalNumber;
+    const isPresent = soldier.isChecked ? "✅" : "❌";
+    const notes = soldier.notes;
+    const soldierOutput =
+      nameAndNumber +
+      "-" +
+      isPresent +
+      SPACER +
+      (soldier.isChecked ? `היערות: ${notes}` : "");
+    output.push(soldierOutput);
+  });
+  return output.join(SPACER + SPACER);
+}
