@@ -8,31 +8,12 @@ import {
 import SoldierItem from "./soldier-item";
 import { Soldier } from "../../storage/storage.type";
 
-const SoldiersList = () => {
-  const [soldiers, setSoldiers] = useState<Soldier[]>([]);
-
-  useEffect(() => {
-    const soldiers = getSoldiers();
-    setSoldiers(soldiers);
-  }, []);
-
-  const filterMissing = () => {
-    const all = getSoldiers();
-    const missing = all.filter((soldier) => !soldier.isChecked);
-    setSoldiers(missing);
-  };
-
-  const filterChecked = () => {
-    const all = getSoldiers();
-    const checked = all.filter((soldier) => soldier.isChecked);
-    setSoldiers(checked);
-  };
-
-  const filterAll = () => {
-    const all = getSoldiers();
-    setSoldiers(all);
-  };
-
+const SoldiersList = ({
+  soldiers,
+  filterMissing,
+  filterChecked,
+  filterAll,
+}: ISoldiersList) => {
   return (
     <article className="mt-12 w-full">
       <div className="flex flex-wrap gap-6 items-center justify-center mb-10">
@@ -73,5 +54,12 @@ const SoldiersList = () => {
     </article>
   );
 };
+
+interface ISoldiersList {
+  soldiers: Soldier[];
+  filterMissing: () => void;
+  filterChecked: () => void;
+  filterAll: () => void;
+}
 
 export default SoldiersList;

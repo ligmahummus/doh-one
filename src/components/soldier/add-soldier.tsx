@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { addSoldier } from "../../storage/storage.service";
 
-const AddSoldier = () => {
+const AddSoldier = ({ refreshList }: IAddSoldier) => {
   const [soldierName, setSoldierName] = useState<string>("");
   //   const [alert, setAlert] = useState<string>("");
 
@@ -18,6 +18,7 @@ const AddSoldier = () => {
     e.preventDefault();
     addSoldier(soldierName);
     setSoldierName("");
+    refreshList();
     // setAlert("asdasd");
   };
 
@@ -49,5 +50,9 @@ const AddSoldier = () => {
     </>
   );
 };
+
+interface IAddSoldier {
+  refreshList: () => void;
+}
 
 export default AddSoldier;
