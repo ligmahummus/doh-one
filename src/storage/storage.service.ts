@@ -101,12 +101,12 @@ export function whatsappOutput(): string {
   let output: string[] = [];
 
   soldiers.forEach((soldier) => {
-    const nameAndNumber = `${soldier.name}, מ.א: ${soldier.personalNumber}`;
-    const isPresent = soldier.isChecked ? "✅" : "❌";
+    const nameAndNumber = `שם: ${soldier.name}${SPACER}מ.א: ${soldier.personalNumber}`;
+    const isPresent = `נוכח?: ${soldier.isChecked ? "✅" : "❌"}`;
     const notes = soldier.notes;
     const soldierOutput =
       nameAndNumber +
-      " - " +
+      SPACER +
       isPresent +
       SPACER +
       `היערות: ${notes ? notes : "אין"}`;
