@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import { Soldier } from "../../storage/storage.type";
 import { updateSoldierNote } from "../../storage/storage.service";
 
