@@ -109,7 +109,7 @@ export function whatsappOutput(): string {
       SPACER +
       isPresent +
       SPACER +
-      `היערות: ${notes ? notes : "אין"}`;
+      `הערות: ${notes ? notes : "אין"}`;
     output.push(soldierOutput);
   });
   return output.join(SPACER + SPACER);
