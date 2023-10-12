@@ -27,12 +27,17 @@ const ExportForm = ({ toggle }: IExportForm) => {
   return (
     <div className="fixed inset-0 bg-zinc-800/60 flex items-center justify-center">
       <form
-        className="bg-white h-max w-[90%] shadow-xl p-6 rounded-xl flex flex-col gap-6"
+        className="bg-white h-max w-[90%] max-w-[600px] shadow-xl p-6 rounded-xl flex flex-col gap-6"
         onSubmit={handleSubmit}
       >
         <div onClick={toggle} className="text-red-500 self-end">
           סגור
         </div>
+        <ul className="list-disc bg-gray-100 p-2 rounded-xl border-[1px] text-sm text-gray-700">
+          <li className="mr-4">כדאי לרשום את המספר ידנית ולא להעתיק ולהדביק</li>
+          <li className="mr-4">ללא קידומת, ללא מקף, לדוגמה - 0501234567</li>
+          <li className="mr-4">המספר נשמר אוטומטית לפעמים הבאות</li>
+        </ul>
         <div className="flex flex-col gap-2">
           <label htmlFor="phone">מספר פלאפון: </label>
 
