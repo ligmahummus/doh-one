@@ -12,9 +12,7 @@ const ExportForm = ({ toggle }: IExportForm) => {
     e.preventDefault();
     if (isNaN(+phoneNumber)) return alert("מספר פלאפון חייב להיות מספר");
     if (!phoneNumber) return alert("חסר מספר פלאפון");
-    location.href = `whatsapp://send?text=${encodeURIComponent(
-      "test%0atest"
-    )}&phone=+972${+phoneNumber}`;
+    location.href = `whatsapp://send?text=test%0atest&phone=+972${+phoneNumber}`;
 
     // location.href = `http://wa.me/+972${+phoneNumber}?text=Line%0aBreak`;
     // https://wa.me/+99123456789?text=Line%0aBreak
