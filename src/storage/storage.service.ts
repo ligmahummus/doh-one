@@ -31,9 +31,14 @@ export function checkSoldier(id: string, isChecked: boolean): void {
 export function removeSoldier(id: string): void {
   const soldiers = getSoldiers();
   const index = soldiers.findIndex((soldier) => soldier.id === id);
+
   if (index !== -1) {
-    soldiers.splice(index, 1);
-    setSoldiers(soldiers);
+    const input = prompt("Are you sure you want to delete this soldier? (y/n)");
+    if (input == "y") {
+      soldiers.splice(index, 1);
+      setSoldiers(soldiers);
+      location.reload();
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checkSoldier } from "../../storage/storage.service";
+import { checkSoldier, removeSoldier } from "../../storage/storage.service";
 import { Soldier } from "../../storage/storage.type";
 import EditSoldierNote from "./edit-soldier-note";
 
@@ -26,7 +26,15 @@ const SoldierItem = ({ soldier }: ISoldierItem) => {
           id={soldier.id}
           checked={checked}
         />
-        <label htmlFor={soldier.id}>{soldier.name}</label>
+        <div className="flex items-center gap-4">
+          <label htmlFor={soldier.id}>{soldier.name}</label>
+          <button
+            className="text-red-500 text-sm"
+            onClick={() => removeSoldier(soldier.id)}
+          >
+            הסר
+          </button>
+        </div>
       </div>
       {editNote ? (
         <EditSoldierNote
