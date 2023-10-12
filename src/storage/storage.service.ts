@@ -112,5 +112,5 @@ export function whatsappOutput(): string {
       `היערות: ${notes ? notes : "אין"}`;
     output.push(soldierOutput);
   });
-  return output.join(SPACER);
+  return output.join(SPACER + SPACER);
 }
