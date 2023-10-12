@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
 import {
   clearAllCheckboxes,
   clearAllNotes,
   clearAllSoldiers,
-  getSoldiers,
 } from "../../storage/storage.service";
 import SoldierItem from "./soldier-item";
 import { Soldier } from "../../storage/storage.type";
