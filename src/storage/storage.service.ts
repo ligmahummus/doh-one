@@ -3,12 +3,13 @@ import { Soldier } from "./storage.type";
 
 const LOCAL_STORAGE_KEY = "soldiers";
 
-export function addSoldier(name: string): void {
+export function addSoldier(name: string, personalNumber: string): void {
   const soldier: Soldier = {
     id: uuid(),
     name,
     notes: "",
     isChecked: false,
+    personalNumber: personalNumber,
   };
   const soldiers = getSoldiers();
   soldiers.push(soldier);
@@ -91,4 +92,30 @@ export function clearAllNotes() {
     setSoldiers(soldiers);
     location.reload();
   }
+}
+
+export function whatsappOutput(): string {
+  const SPACER = "%0a";
+  const soldiers = getSoldiers();
+
+  let output: string[] = [];
+
+  soldiers.forEach((soldier) => {
+    const nameAndNumber = `שם: ${soldier.name}${SPACER}מ.א: ${soldier.personalNumber}`;
+    const isPresent = `נוכח?: ${soldier.isChecked ? "✅" : "❌"}`;
+    const notes = soldier.notes;
+    const soldierOutput =
+      nameAndNumber +
+      SPACER +
+      isPresent +
+      SPACER +
+      `היערות: ${notes ? notes : "אין"}`;
+    output.push(soldierOutput);
+  });
+  return output.join(SPACER + SPACER);
+}
+
+export function savePhone(phone: string): void {
+  const PHONE_KEY = "phone";
+  localStorage.setItem(PHONE_KEY, phone);
 }
